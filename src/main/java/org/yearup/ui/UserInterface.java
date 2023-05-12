@@ -105,6 +105,7 @@ public class UserInterface
                     break;
                 case 9:
                     // Remove vehicle
+                    processRemoveVehicleRequest();
                     break;
             }
 
@@ -290,7 +291,35 @@ public class UserInterface
 
     public void processRemoveVehicleRequest()
     {
+        // Display so user can see VINs
+        processGetAllVehiclesRequest();
+        printTitle("REMOVE A VEHICLE");
+        int vin;
 
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter VIN to remove: ");
+                vin = Integer.parseInt(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
+
+        for(Vehicle v : dealership.getAllVehicles())
+        {
+            if(v.getVin() == vin)
+            {
+                dealership.remove(v);
+                printGreenMessage("VEHICLE REMOVED");
+                return;
+            }
+        }
+        printRedMessage("VIN NOT FOUND");
     }
 
 }

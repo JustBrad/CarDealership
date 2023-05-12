@@ -33,7 +33,8 @@ public class Dealership
 
     public void remove(Vehicle vehicle)
     {
-
+        inventory.remove(vehicle);
+        fileManager.saveDealership(this);
     }
     public ArrayList<Vehicle> getAllVehicles()
     {
