@@ -25,7 +25,7 @@ public class UserInterface
     {
         DealershipFileManager fileManager = new DealershipFileManager();
         this.dealership = fileManager.getDealership();
-        System.out.println("\n" + dealership.getName() + " has been loaded.");
+        System.out.println("\nTravelling to " + dealership.getName() + "...");
     }
 
     // Methods
@@ -60,6 +60,7 @@ public class UserInterface
                     break;
                 case 1:
                     // Price
+                    // processGetByPriceRequest();
                     break;
                 case 2:
                     // Make/Model
@@ -104,9 +105,18 @@ public class UserInterface
         System.out.println("------------------------------------------------------------------------------");
     }
 
-    public void processGetByPriceRequest()
+    public void displayVehicles(ArrayList<Vehicle> vehicles)
     {
-        dealership.getVehiclesByPrice(0, 100);
+        printLabels();
+        for(Vehicle v : vehicles)
+        {
+            printEntry(v);
+        }
+    }
+
+    public void processGetByPriceRequest(double min, double max)
+    {
+        dealership.getVehiclesByPrice(min, max);
     }
 
     public void processGetByMakeModelRequest()
@@ -136,12 +146,7 @@ public class UserInterface
 
     public void processGetAllVehiclesRequest()
     {
-        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
-        printLabels();
-        for(Vehicle v : vehicles)
-        {
-            printEntry(v);
-        }
+        displayVehicles(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest()
