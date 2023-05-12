@@ -11,8 +11,13 @@ import java.util.Scanner;
 
 public class DealershipFileManager
 {
-    private String fileName = "inventory.csv";
+    private String fileName;
     private FileWriter fileWriter = null;
+
+    public DealershipFileManager()
+    {
+        this.fileName = "inventory.csv";
+    }
 
     public Dealership getDealership()
     {
@@ -85,7 +90,7 @@ public class DealershipFileManager
             }
             catch (IOException e)
             {
-                // If can't close file
+                // If you can't close file
             }
             if (scanner != null)
             {

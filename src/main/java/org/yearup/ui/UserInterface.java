@@ -13,6 +13,7 @@ public class UserInterface
 {
     // Variables
     private Dealership dealership;
+    DealershipFileManager fileManager;
     private static Scanner scanner = new Scanner(System.in);
 
     // Constructor
@@ -24,7 +25,7 @@ public class UserInterface
     // Load dealership
     private void init()
     {
-        DealershipFileManager fileManager = new DealershipFileManager();
+        fileManager = new DealershipFileManager();
         this.dealership = fileManager.getDealership();
         System.out.println("\nTravelling to " + dealership.getName() + "...");
     }
@@ -134,8 +135,8 @@ public class UserInterface
 
     public void printLabels()
     {
-        System.out.println(ColorCodes.BLACK_BACKGROUND + " VIN    YEAR    MAKE     MODEL      TYPE       COLOR      MILES         PRICE   " + ColorCodes.RESET);
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println(ColorCodes.BLACK_BACKGROUND + " VIN    YEAR    MAKE         MODEL      TYPE       COLOR      MILES         PRICE   " + ColorCodes.RESET);
+        System.out.println("------------------------------------------------------------------------------------");
     }
 
     public void printEntry(Vehicle v)
@@ -143,42 +144,42 @@ public class UserInterface
         switch(v.getColor())
         {
             case "BLUE":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.CYAN + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.CYAN + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "RED":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.RED + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.RED + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "PURPLE":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.PURPLE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.PURPLE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "YELLOW":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.YELLOW + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.YELLOW + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "GREEN":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.GREEN + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.GREEN + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "ORANGE":
             case "BROWN":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.ORANGE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.ORANGE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "BLACK":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.BLACK + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.BLACK + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             case "GRAY":
             case "GREY":
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s" + ColorCodes.WHITE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s" + ColorCodes.WHITE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
             default:
-                System.out.printf("%-7d %-7d %-8s %-10s %-10s %-10s %-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                System.out.println("--------------------------------------------------------------------------------");
+                System.out.printf("%-7d %-7d %-12s %-10s %-10s %-10s %-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                System.out.println("------------------------------------------------------------------------------------");
                 break;
         }
     }
