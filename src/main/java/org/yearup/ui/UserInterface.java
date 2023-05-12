@@ -217,10 +217,34 @@ public class UserInterface
     public void processGetByYearRequest()
     {
         printTitle("SEARCH BY YEAR");
-        System.out.print("Enter minimum year: ");
-        int min = Integer.parseInt(scanner.nextLine().strip());
-        System.out.print("Enter maximum year: ");
-        int max = Integer.parseInt(scanner.nextLine().strip());
+        int min;
+        int max;
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter minimum year: ");
+                min = Integer.parseInt(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter maximum year: ");
+                max = Integer.parseInt(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
         displayVehicles(dealership.getVehiclesByYear(min, max));
     }
 
