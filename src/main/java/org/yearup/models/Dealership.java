@@ -51,17 +51,41 @@ public class Dealership
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model)
     {
-        return null;
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle v : inventory)
+        {
+            if(v.getMake().equalsIgnoreCase(make) && v.getModel().equalsIgnoreCase(model))
+            {
+                vehicles.add(v);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max)
     {
-        return null;
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle v : inventory)
+        {
+            if(v.getYear() >= min && v.getYear() <= max)
+            {
+                vehicles.add(v);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByColor(String color)
     {
-        return null;
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle v : inventory)
+        {
+            if(v.getColor().equalsIgnoreCase(color))
+            {
+                vehicles.add(v);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max)

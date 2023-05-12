@@ -64,12 +64,15 @@ public class UserInterface
                     break;
                 case 2:
                     // Make/Model
+                    processGetByMakeModelRequest();
                     break;
                 case 3:
                     // Year
+                    processGetByYearRequest();
                     break;
                 case 4:
                     // Color
+                    processGetByColorRequest();
                     break;
                 case 5:
                     // Mileage
@@ -131,22 +134,35 @@ public class UserInterface
 
     public void processGetByMakeModelRequest()
     {
-        dealership.getVehiclesByMakeModel("make", "model");
+        printTitle("SEARCH BY MAKE/MODEL");
+        System.out.print("Enter make: ");
+        String make = scanner.nextLine();
+        System.out.print("Enter model: ");
+        String model = scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByMakeModel(make, model));
     }
 
     public void processGetByYearRequest()
     {
-        dealership.getVehiclesByYear(2000, 2030);
+        printTitle("SEARCH BY YEAR");
+        System.out.print("Enter minimum year: ");
+        int min = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter maximum year: ");
+        int max = Integer.parseInt(scanner.nextLine());
+        displayVehicles(dealership.getVehiclesByYear(min, max));
     }
 
     public void processGetByColorRequest()
     {
-        dealership.getVehiclesByColor("Red");
+        printTitle("SEARCH BY COLOR");
+        System.out.print("Enter color: ");
+        String color = scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
 
     public void processGetByMileageRequest()
     {
-
+        
     }
 
     public void processGetByVehicleTypeRequest()
