@@ -146,21 +146,61 @@ public class UserInterface
 
     public void displayVehicles(ArrayList<Vehicle> vehicles)
     {
+        int count = 0;
         System.out.println();
         printLabels();
         for(Vehicle v : vehicles)
         {
             printEntry(v);
+            count++;
+        }
+
+        // Print how many found
+        if(vehicles.size() > 1)
+        {
+            printGreenMessage("FOUND " + vehicles.size() + " VEHICLES");
+        }
+        else if(vehicles.size() == 1)
+        {
+            printGreenMessage("FOUND 1 VEHICLE");
+        }
+        else
+        {
+            printRedMessage("NO VEHICLES FOUND");
         }
     }
 
     public void processGetByPriceRequest()
     {
         printTitle("SEARCH BY PRICE");
-        System.out.print("Enter minimum price: ");
-        double min = Double.parseDouble(scanner.nextLine().strip());
-        System.out.print("Enter maximum price: ");
-        double max = Double.parseDouble(scanner.nextLine().strip());
+        double min;
+        double max;
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter minimum price: ");
+                min = Double.parseDouble(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter maximum price: ");
+                max = Double.parseDouble(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
         displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
