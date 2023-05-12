@@ -4,12 +4,15 @@ import org.yearup.models.Dealership;
 import org.yearup.models.Vehicle;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DealershipFileManager
 {
     private String fileName = "inventory.csv";
+    private FileWriter fileWriter = null;
 
     public Dealership getDealership()
     {
@@ -46,7 +49,7 @@ public class DealershipFileManager
                     dealerName = columns[0];
                     address = columns[1];
                     phone = columns[2];
-                    dealership = new Dealership(dealerName, address, phone);
+                    dealership = new Dealership(dealerName.toUpperCase(), address.toUpperCase(), phone);
                 }
                 // Rest are vehicles
                 else
@@ -60,7 +63,7 @@ public class DealershipFileManager
                     odometer = Integer.parseInt(columns[6]);
                     price = Double.parseDouble(columns[7]);
 
-                    Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+                    Vehicle vehicle = new Vehicle(vin, year, make.toUpperCase(), model.toUpperCase(), vehicleType.toUpperCase(), color.toUpperCase(), odometer, price);
                     dealership.addVehicle(vehicle);
                 }
 
@@ -69,7 +72,7 @@ public class DealershipFileManager
         }
         catch (IOException e)
         {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
         finally
         {
@@ -94,6 +97,39 @@ public class DealershipFileManager
 
     public void saveDealership(Dealership dealership)
     {
+        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
 
+        try
+        {
+            // Create file writer
+            fileWriter = new FileWriter(fileName);
+
+            // Write first line (Dealership info)
+            fileWriter.write(dealership.getName().toUpperCase() + "|" + dealership.getAddress().toUpperCase() + "|" + dealership.getPhone() + "\n");
+
+            // Write all vehicles
+            for(Vehicle v : vehicles)
+            {
+                fileWriter.write(v.getVin() + "|" + v.getYear() + "|" + v.getMake().toUpperCase() + "|" + v.getModel().toUpperCase() + "|" + v.getVehicleType().toUpperCase() + "|" + v.getColor().toUpperCase() + "|" + v.getOdometer() + "|" + v.getPrice() + "\n");
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        finally
+        {
+            if(fileWriter != null)
+            {
+                try
+                {
+                    fileWriter.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
     }
 }

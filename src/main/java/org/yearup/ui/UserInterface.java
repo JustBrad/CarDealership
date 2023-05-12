@@ -101,6 +101,7 @@ public class UserInterface
                     break;
                 case 8:
                     // Add vehicle
+                    processAddVehicleRequest();
                     break;
                 case 9:
                     // Remove vehicle
@@ -113,6 +114,16 @@ public class UserInterface
     public void printTitle(String title)
     {
         System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + "---------- " + title.toUpperCase() +  " ----------" + ColorCodes.RESET + "\n");
+    }
+
+    public void printGreenMessage(String message)
+    {
+        System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + ColorCodes.GREEN + message + ColorCodes.RESET + "\n");
+    }
+
+    public void printRedMessage(String message)
+    {
+        System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + ColorCodes.RED + message + ColorCodes.RESET + "\n");
     }
 
     public void printInvalid()
@@ -205,7 +216,29 @@ public class UserInterface
 
     public void processAddVehicleRequest()
     {
+        printTitle("ADD A VEHICLE");
 
+        System.out.print("Enter VIN: ");
+        int vin = Integer.parseInt(scanner.nextLine().strip());
+        System.out.print("Enter year: ");
+        int year = Integer.parseInt(scanner.nextLine().strip());
+        System.out.print("Enter make: ");
+        String make = scanner.nextLine().strip();
+        System.out.print("Enter model: ");
+        String model = scanner.nextLine().strip();
+        System.out.print("Enter type: ");
+        String type = scanner.nextLine().strip();
+        System.out.print("Enter color: ");
+        String color = scanner.nextLine().strip();
+        System.out.print("Enter mileage: ");
+        int odometer = Integer.parseInt(scanner.nextLine().strip());
+        System.out.print("Enter price: $");
+        double price = Double.parseDouble(scanner.nextLine().strip());
+
+        Vehicle vehicle = new Vehicle(vin, year, make.toUpperCase(), model.toUpperCase(), type.toUpperCase(), color.toUpperCase(), odometer, price);
+        dealership.addVehicle(vehicle);
+
+        printGreenMessage("VEHICLE ADDED");
     }
 
     public void processRemoveVehicleRequest()
