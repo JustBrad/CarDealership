@@ -5,6 +5,7 @@ import org.yearup.managers.DealershipFileManager;
 import org.yearup.models.Dealership;
 import org.yearup.models.Vehicle;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -50,8 +51,20 @@ public class UserInterface
             System.out.println("0) Exit");
             System.out.println();
 
-            System.out.print("Enter an option: ");
-            int option = Integer.parseInt(scanner.nextLine().strip());
+            int option;
+            while(true)
+            {
+                try
+                {
+                    System.out.print("Enter an option: ");
+                    option = Integer.parseInt(scanner.nextLine().strip());
+                    break;
+                }
+                catch(Exception e)
+                {
+                    printInvalid();
+                }
+            }
 
             switch(option)
             {
@@ -100,6 +113,11 @@ public class UserInterface
     public void printTitle(String title)
     {
         System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + "---------- " + title.toUpperCase() +  " ----------" + ColorCodes.RESET + "\n");
+    }
+
+    public void printInvalid()
+    {
+        System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + ColorCodes.RED + "INVALID INPUT" + ColorCodes.RESET + "\n");
     }
 
     public void printLabels()
