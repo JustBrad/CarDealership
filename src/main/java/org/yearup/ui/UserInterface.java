@@ -35,7 +35,7 @@ public class UserInterface
 
         while(true)
         {
-            System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + "---------- WELCOME TO THE DEALERSHIP ----------" + ColorCodes.RESET + "\n");
+            printTitle("WELCOME TO THE DEALERSHIP");
             System.out.println("What would you like to do?");
             System.out.println();
             System.out.println("1) Search Vehicle by Price");
@@ -60,7 +60,7 @@ public class UserInterface
                     break;
                 case 1:
                     // Price
-                    // processGetByPriceRequest();
+                    processGetByPriceRequest();
                     break;
                 case 2:
                     // Make/Model
@@ -92,21 +92,26 @@ public class UserInterface
         }
     }
 
+    public void printTitle(String title)
+    {
+        System.out.println("\n" + ColorCodes.BLACK_BACKGROUND + "---------- " + title.toUpperCase() +  " ----------" + ColorCodes.RESET + "\n");
+    }
+
     public void printLabels()
     {
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.println(" VIN    YEAR   MAKE     MODEL      TYPE       COLOR      MILES         PRICE");
-        System.out.println("------------------------------------------------------------------------------");
+        System.out.println(ColorCodes.BLACK_BACKGROUND + " VIN    YEAR   MAKE     MODEL      TYPE       COLOR      MILES         PRICE   " + ColorCodes.RESET);
+        System.out.println("-------------------------------------------------------------------------------");
     }
 
     public void printEntry(Vehicle v)
     {
-        System.out.printf("%-7d %-6d %-8s %-10s %-10s %-10s %-10d $ %8.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-        System.out.println("------------------------------------------------------------------------------");
+        System.out.printf("%-7d %-6d %-8s %-10s %-10s %-10s %-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+        System.out.println("-------------------------------------------------------------------------------");
     }
 
     public void displayVehicles(ArrayList<Vehicle> vehicles)
     {
+        System.out.println();
         printLabels();
         for(Vehicle v : vehicles)
         {
@@ -114,9 +119,14 @@ public class UserInterface
         }
     }
 
-    public void processGetByPriceRequest(double min, double max)
+    public void processGetByPriceRequest()
     {
-        dealership.getVehiclesByPrice(min, max);
+        printTitle("SEARCH BY PRICE");
+        System.out.print("Enter minimum price: ");
+        double min = Double.parseDouble(scanner.nextLine());
+        System.out.print("Enter maximum price: ");
+        double max = Double.parseDouble(scanner.nextLine());
+        displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
     public void processGetByMakeModelRequest()
