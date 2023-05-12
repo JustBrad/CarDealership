@@ -3,7 +3,9 @@ package org.yearup.ui;
 import org.yearup.ColorCodes;
 import org.yearup.managers.DealershipFileManager;
 import org.yearup.models.Dealership;
+import org.yearup.models.Vehicle;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface
@@ -22,7 +24,7 @@ public class UserInterface
     private void init()
     {
         DealershipFileManager fileManager = new DealershipFileManager();
-        dealership = fileManager.getDealership();
+        this.dealership = fileManager.getDealership();
         System.out.println("\n" + dealership.getName() + " has been loaded.");
     }
 
@@ -58,25 +60,48 @@ public class UserInterface
                     break;
                 case 1:
                     // Price
+                    break;
                 case 2:
                     // Make/Model
+                    break;
                 case 3:
                     // Year
+                    break;
                 case 4:
                     // Color
+                    break;
                 case 5:
                     // Mileage
+                    break;
                 case 6:
                     // Type
+                    break;
                 case 7:
                     // List all
+                    processGetAllVehiclesRequest();
+                    break;
                 case 8:
                     // Add vehicle
+                    break;
                 case 9:
                     // Remove vehicle
+                    break;
             }
 
         }
+    }
+
+    public void printLabels()
+    {
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println(" VIN    YEAR   MAKE     MODEL      TYPE       COLOR      MILES         PRICE");
+        System.out.println("------------------------------------------------------------------------------");
+    }
+
+    public void printEntry(Vehicle v)
+    {
+        System.out.printf("%-7d %-6d %-8s %-10s %-10s %-10s %-10d $ %8.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+        System.out.println("------------------------------------------------------------------------------");
     }
 
     public void processGetByPriceRequest()
@@ -96,7 +121,7 @@ public class UserInterface
 
     public void processGetByColorRequest()
     {
-
+        dealership.getVehiclesByColor("Red");
     }
 
     public void processGetByMileageRequest()
@@ -111,7 +136,12 @@ public class UserInterface
 
     public void processGetAllVehiclesRequest()
     {
-
+        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
+        printLabels();
+        for(Vehicle v : vehicles)
+        {
+            printEntry(v);
+        }
     }
 
     public void processAddVehicleRequest()
