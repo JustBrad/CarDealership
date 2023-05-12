@@ -103,7 +103,15 @@ public class Dealership
 
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType)
     {
-        return null;
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle v : inventory)
+        {
+            if(v.getVehicleType().equalsIgnoreCase(vehicleType))
+            {
+                vehicles.add(v);
+            }
+        }
+        return vehicles;
     }
 
     // Getters & setters

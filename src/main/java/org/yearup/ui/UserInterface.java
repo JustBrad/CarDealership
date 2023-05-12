@@ -51,7 +51,7 @@ public class UserInterface
             System.out.println();
 
             System.out.print("Enter an option: ");
-            int option = Integer.parseInt(scanner.nextLine());
+            int option = Integer.parseInt(scanner.nextLine().strip());
 
             switch(option)
             {
@@ -80,6 +80,7 @@ public class UserInterface
                     break;
                 case 6:
                     // Type
+                    processGetByVehicleTypeRequest();
                     break;
                 case 7:
                     // List all
@@ -127,9 +128,9 @@ public class UserInterface
     {
         printTitle("SEARCH BY PRICE");
         System.out.print("Enter minimum price: ");
-        double min = Double.parseDouble(scanner.nextLine());
+        double min = Double.parseDouble(scanner.nextLine().strip());
         System.out.print("Enter maximum price: ");
-        double max = Double.parseDouble(scanner.nextLine());
+        double max = Double.parseDouble(scanner.nextLine().strip());
         displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
@@ -137,9 +138,9 @@ public class UserInterface
     {
         printTitle("SEARCH BY MAKE/MODEL");
         System.out.print("Enter make: ");
-        String make = scanner.nextLine();
+        String make = scanner.nextLine().strip();
         System.out.print("Enter model: ");
-        String model = scanner.nextLine();
+        String model = scanner.nextLine().strip();
         displayVehicles(dealership.getVehiclesByMakeModel(make, model));
     }
 
@@ -147,9 +148,9 @@ public class UserInterface
     {
         printTitle("SEARCH BY YEAR");
         System.out.print("Enter minimum year: ");
-        int min = Integer.parseInt(scanner.nextLine());
+        int min = Integer.parseInt(scanner.nextLine().strip());
         System.out.print("Enter maximum year: ");
-        int max = Integer.parseInt(scanner.nextLine());
+        int max = Integer.parseInt(scanner.nextLine().strip());
         displayVehicles(dealership.getVehiclesByYear(min, max));
     }
 
@@ -157,7 +158,7 @@ public class UserInterface
     {
         printTitle("SEARCH BY COLOR");
         System.out.print("Enter color: ");
-        String color = scanner.nextLine();
+        String color = scanner.nextLine().strip();
         displayVehicles(dealership.getVehiclesByColor(color));
     }
 
@@ -165,15 +166,18 @@ public class UserInterface
     {
         printTitle("SEARCH BY MILEAGE");
         System.out.print("Enter minimum miles: ");
-        int min = Integer.parseInt(scanner.nextLine());
+        int min = Integer.parseInt(scanner.nextLine().strip());
         System.out.print("Enter maximum miles: ");
-        int max = Integer.parseInt(scanner.nextLine());
+        int max = Integer.parseInt(scanner.nextLine().strip());
         displayVehicles(dealership.getVehiclesByMileage(min, max));
     }
 
     public void processGetByVehicleTypeRequest()
     {
-
+        printTitle("SEARCH BY VEHICLE TYPE");
+        System.out.print("Enter type: ");
+        String type = scanner.nextLine().strip();
+        displayVehicles(dealership.getVehiclesByType(type));
     }
 
     public void processGetAllVehiclesRequest()
