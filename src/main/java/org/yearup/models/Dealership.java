@@ -58,7 +58,7 @@ public class Dealership
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         for(Vehicle v : inventory)
         {
-            if(v.getMake().equalsIgnoreCase(make) && v.getModel().equalsIgnoreCase(model))
+            if(v.getMake().contains(make.toUpperCase()) && v.getModel().contains(model.toUpperCase()))
             {
                 vehicles.add(v);
             }
@@ -84,7 +84,7 @@ public class Dealership
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         for(Vehicle v : inventory)
         {
-            if(v.getColor().equalsIgnoreCase(color))
+            if(v.getColor().contains(color.toUpperCase()))
             {
                 vehicles.add(v);
             }
@@ -110,7 +110,7 @@ public class Dealership
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         for(Vehicle v : inventory)
         {
-            if(v.getVehicleType().equalsIgnoreCase(vehicleType))
+            if(v.getVehicleType().contains(vehicleType.toUpperCase()))
             {
                 vehicles.add(v);
             }

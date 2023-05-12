@@ -36,19 +36,19 @@ public class UserInterface
 
         while(true)
         {
-            printTitle("WELCOME TO THE DEALERSHIP");
+            printTitle("WELCOME TO " + dealership.getName().toUpperCase());
             System.out.println("What would you like to do?");
             System.out.println();
-            System.out.println("1) Search Vehicle by Price");
+            System.out.println(ColorCodes.YELLOW + "1) Search Vehicle by Price");
             System.out.println("2) Search Vehicle by Make/Model");
             System.out.println("3) Search Vehicle by Year");
             System.out.println("4) Search Vehicle by Color");
             System.out.println("5) Search Vehicle by Mileage");
             System.out.println("6) Search Vehicle by Type");
-            System.out.println("7) List All Vehicles");
-            System.out.println("8) Add a Vehicle");
-            System.out.println("9) Remove a Vehicle");
-            System.out.println("0) Exit");
+            System.out.println(ColorCodes.CYAN + "7) List All Vehicles");
+            System.out.println(ColorCodes.GREEN + "8) Add a Vehicle");
+            System.out.println(ColorCodes.RED + "9) Remove a Vehicle");
+            System.out.println(ColorCodes.PURPLE + "0) Exit" + ColorCodes.RESET);
             System.out.println();
 
             int option;
@@ -217,11 +217,36 @@ public class UserInterface
     public void processAddVehicleRequest()
     {
         printTitle("ADD A VEHICLE");
+        int vin;
+        int year;
+        int odometer;
+        double price;
 
-        System.out.print("Enter VIN: ");
-        int vin = Integer.parseInt(scanner.nextLine().strip());
-        System.out.print("Enter year: ");
-        int year = Integer.parseInt(scanner.nextLine().strip());
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter VIN: ");
+                vin = Integer.parseInt(scanner.nextLine().strip());
+                break;
+            } catch (Exception e)
+            {
+                printInvalid();
+            }
+        }
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter year: ");
+                year = Integer.parseInt(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
         System.out.print("Enter make: ");
         String make = scanner.nextLine().strip();
         System.out.print("Enter model: ");
@@ -230,10 +255,32 @@ public class UserInterface
         String type = scanner.nextLine().strip();
         System.out.print("Enter color: ");
         String color = scanner.nextLine().strip();
-        System.out.print("Enter mileage: ");
-        int odometer = Integer.parseInt(scanner.nextLine().strip());
-        System.out.print("Enter price: $");
-        double price = Double.parseDouble(scanner.nextLine().strip());
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter mileage: ");
+                odometer = Integer.parseInt(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter price: $");
+                price = Double.parseDouble(scanner.nextLine().strip());
+                break;
+            }
+            catch(Exception e)
+            {
+                printInvalid();
+            }
+        }
 
         Vehicle vehicle = new Vehicle(vin, year, make.toUpperCase(), model.toUpperCase(), type.toUpperCase(), color.toUpperCase(), odometer, price);
         dealership.addVehicle(vehicle);
