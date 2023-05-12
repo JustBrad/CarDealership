@@ -76,6 +76,7 @@ public class UserInterface
                     break;
                 case 5:
                     // Mileage
+                    processGetByMileageRequest();
                     break;
                 case 6:
                     // Type
@@ -162,7 +163,12 @@ public class UserInterface
 
     public void processGetByMileageRequest()
     {
-        
+        printTitle("SEARCH BY MILEAGE");
+        System.out.print("Enter minimum miles: ");
+        int min = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter maximum miles: ");
+        int max = Integer.parseInt(scanner.nextLine());
+        displayVehicles(dealership.getVehiclesByMileage(min, max));
     }
 
     public void processGetByVehicleTypeRequest()

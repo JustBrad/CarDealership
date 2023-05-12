@@ -90,7 +90,15 @@ public class Dealership
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max)
     {
-        return null;
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle v : inventory)
+        {
+            if(v.getOdometer() >= min && v.getOdometer() <= max)
+            {
+                vehicles.add(v);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType)
