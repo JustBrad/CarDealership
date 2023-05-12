@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 public class DealershipFileManager
 {
-    private static final String fileName = "inventory.csv";
+    private String fileName = "inventory.csv";
 
-    public static Dealership getDealership()
+    public Dealership getDealership()
     {
-        Dealership dealership = new Dealership();
+        Dealership dealership = null;
         FileInputStream fileStream = null;
         Scanner scanner = null;
         String dealerName;
@@ -92,7 +92,7 @@ public class DealershipFileManager
         return dealership;
     }
 
-    public static void saveDealership(Dealership dealership)
+    public void saveDealership(Dealership dealership)
     {
 
     }

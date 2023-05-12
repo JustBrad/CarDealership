@@ -21,7 +21,9 @@ public class UserInterface
     // Load dealership
     private void init()
     {
-        dealership = DealershipFileManager.getDealership();
+        DealershipFileManager fileManager = new DealershipFileManager();
+        dealership = fileManager.getDealership();
+        System.out.println("\n" + dealership.getName() + " has been loaded.");
     }
 
     // Methods
