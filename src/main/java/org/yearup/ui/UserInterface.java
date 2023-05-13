@@ -25,7 +25,7 @@ public class UserInterface
     // Load dealership
     private void init()
     {
-        fileManager = new DealershipFileManager("inventory2.csv");
+        fileManager = new DealershipFileManager("inventory.csv");
         this.dealership = fileManager.getDealership();
         this.dealership.setFileManager(fileManager);
         System.out.println("\nTravelling to " + dealership.getName() + "...");
@@ -175,6 +175,7 @@ public class UserInterface
                 break;
             case "GRAY":
             case "GREY":
+            case "SILVER":
                 System.out.printf("%-7d %-7d %-20s %-20s %-10s" + ColorCodes.WHITE + " %-10s " + ColorCodes.RESET + "%-10d $ %9.2f\n", v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
                 System.out.println("------------------------------------------------------------------------------------------------------");
                 break;
