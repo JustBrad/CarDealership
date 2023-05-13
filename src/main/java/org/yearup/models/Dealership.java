@@ -11,7 +11,12 @@ public class Dealership
     private String address;
     private String phone;
     private ArrayList<Vehicle> inventory;
-    private DealershipFileManager fileManager = new DealershipFileManager();
+    private DealershipFileManager fileManager = new DealershipFileManager("inventory.csv");
+
+    public void setFileManager(DealershipFileManager fileManager)
+    {
+        this.fileManager = fileManager;
+    }
 
     // Constructors
     public Dealership(){}

@@ -14,9 +14,9 @@ public class DealershipFileManager
     private String fileName;
     private FileWriter fileWriter = null;
 
-    public DealershipFileManager()
+    public DealershipFileManager(String fileName)
     {
-        this.fileName = "inventory.csv";
+        this.fileName = fileName;
     }
 
     public Dealership getDealership()
