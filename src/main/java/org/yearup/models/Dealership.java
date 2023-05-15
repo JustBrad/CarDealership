@@ -1,7 +1,5 @@
 package org.yearup.models;
 
-import org.yearup.managers.DealershipFileManager;
-
 import java.util.ArrayList;
 
 public class Dealership
@@ -11,12 +9,6 @@ public class Dealership
     private String address;
     private String phone;
     private ArrayList<Vehicle> inventory;
-    private DealershipFileManager fileManager = new DealershipFileManager("inventory.csv");
-
-    public void setFileManager(DealershipFileManager fileManager)
-    {
-        this.fileManager = fileManager;
-    }
 
     // Constructors
     public Dealership(){}
@@ -33,13 +25,11 @@ public class Dealership
     public void addVehicle(Vehicle vehicle)
     {
         inventory.add(vehicle);
-        fileManager.saveDealership(this);
     }
 
     public void remove(Vehicle vehicle)
     {
         inventory.remove(vehicle);
-        fileManager.saveDealership(this);
     }
     public ArrayList<Vehicle> getAllVehicles()
     {

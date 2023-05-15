@@ -27,7 +27,6 @@ public class UserInterface
     {
         fileManager = new DealershipFileManager("inventory.csv");
         this.dealership = fileManager.getDealership();
-        this.dealership.setFileManager(fileManager);
         System.out.println("\nTravelling to " + dealership.getName() + "...");
     }
 
@@ -415,6 +414,7 @@ public class UserInterface
 
         Vehicle vehicle = new Vehicle(vin, year, make.toUpperCase(), model.toUpperCase(), type.toUpperCase(), color.toUpperCase(), odometer, price);
         dealership.addVehicle(vehicle);
+        fileManager.saveDealership(dealership);
 
         printGreenMessage("VEHICLE ADDED");
     }
@@ -445,6 +445,8 @@ public class UserInterface
             if(v.getVin() == vin)
             {
                 dealership.remove(v);
+                fileManager.saveDealership(dealership);
+
                 printGreenMessage("VEHICLE REMOVED");
                 return;
             }
